@@ -5,7 +5,7 @@ function MessagesList() {
     <section>
       <ul>
         <li>
-          <Message />
+          <Message text="hello" />
         </li>
       </ul>
     </section>
