@@ -1,23 +1,20 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
-import { ChatState, TMessage } from '../../@types';
-
-// const initialState: ChatState = {
-//   message: {
-//     id: 1,
-//     content: 'Super content',
-//     userName: 'Super Chat',
-//   },
-// };
+import { ChatState, TMessageContent } from '../../@types';
 
 const initialState: ChatState = {
-  message: 'hello',
+  userName: 'Super chat',
+  message: [
+    { content: 'Salut ça va ?' },
+    { content: `T'as pas des super-croquettes ?` },
+    { content: 'Stp' },
+  ],
 };
 
-export const addMessage = createAction<ChatState>;
+export const addMessage = createAction<TMessageContent>('chat/add-message');
 
 const chatReducer = createReducer(initialState, (builder) => {
   builder.addCase(addMessage, (state, action) => {
-    state.message = action.payload;
+    state.message.push({ content: action.payload });
   });
 });
 

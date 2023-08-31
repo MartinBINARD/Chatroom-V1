@@ -1,9 +1,10 @@
-// export type TMessage = {
-//   id: number;
-//   content: string;
-//   userName: string;
-// };
+export type TMessageContent = string;
+
+export type TMessage = {
+  content: TMessageContent;
+};
 
 export interface ChatState {
-  message: string;
+  userName: string;
+  message: TMessage[];
 }
