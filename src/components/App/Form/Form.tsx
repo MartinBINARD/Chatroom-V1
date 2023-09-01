@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../../hooks/redux';
 
@@ -31,6 +32,8 @@ function Form() {
 
   const dispatch = useDispatch();
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     // j'affiche mon intention
     // console.log(
@@ -61,6 +64,10 @@ function Form() {
     }
   }
 
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
   return (
     <form className="form" onSubmit={handleSubmit}>
       <input
@@ -72,6 +79,8 @@ function Form() {
         value={currentMessage}
         // champ contrôlé : modification
         onChange={handleChange}
+        // référence
+        ref={inputRef}
       />
 
       <button type="submit" className="form-button">
