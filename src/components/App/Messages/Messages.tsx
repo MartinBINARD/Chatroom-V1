@@ -1,7 +1,14 @@
 import './Messages.scss';
+import MessagesItem from './MessagesItem';
 
 function Messages() {
-  return <div className="messages">Messages</div>;
+  return (
+    <section className="messages">
+      <MessagesItem />
+      <MessagesItem />
+      <MessagesItem />
+    </section>
+  );
 }
 
 export default Messages;
