@@ -38,10 +38,17 @@ export const changeCurrentMessage = createAction<string>(
 export const addMessage = createAction<Message>('chat/add-message');
 
 const chatReducer = createReducer(initialState, (builder) => {
-  builder.addCase(changeCurrentMessage, (state, action) => {
-    // je traduis mon action en modifiant le state
-    state.currentMessage = action.payload;
-  });
+  builder
+    .addCase(changeCurrentMessage, (state, action) => {
+      // je traduis mon action en modifiant le state
+      state.currentMessage = action.payload;
+    })
+    .addCase(addMessage, (state, action) => {
+      // je traduis mon action
+      state.messages.push(action.payload);
+      // j'efface mon input
+      state.currentMessage = '';
+    });
 });
 
 export default chatReducer;
