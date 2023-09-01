@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../../hooks/redux';
 
-import { changeCurrentMessage } from '../../../store/reducers/chat';
+import { addMessage, changeCurrentMessage } from '../../../store/reducers/chat';
 
 import './Form.scss';
 
@@ -54,6 +54,13 @@ function Form() {
     // state global = state dans le store
     // modifier le store → dispatcher une action
     // cette action sera récupérer dans le reducer pour modifier le state
+    dispatch(
+      addMessage({
+        id: 4, // TODO: générer un ID
+        author: 'Super Chat', // en dur pour le moment
+        content: currentMessage, // valeur depuis mon état
+      })
+    );
   }
 
   return (
