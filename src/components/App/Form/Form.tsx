@@ -1,7 +1,7 @@
 import './Form.scss';
 
 function Form() {
-  return <div className="form">Form</div>;
+  return <form className="form">Form</form>;
 }
 
 export default Form;

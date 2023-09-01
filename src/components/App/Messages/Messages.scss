@@ -1,0 +1,7 @@
+@use '../../../styles/variables' as v;
+
+.messages {
+  background: #fab;
+  flex-grow: 1;
+  padding: v.$gutter;
+}
