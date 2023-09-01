@@ -9,21 +9,21 @@ interface ChatState {
 
 const initialState: ChatState = {
   messages: [
-    {
-      id: 1,
-      author: 'Super Chat',
-      content: 'Salut ça va ?',
-    },
-    {
-      id: 2,
-      author: 'Super Chat',
-      content: "T'as pas des super-croquettes ?",
-    },
-    {
-      id: 3,
-      author: 'Super Chat',
-      content: 'Stp',
-    },
+    // {
+    //   id: 1,
+    //   author: 'Super Chat',
+    //   content: 'Salut ça va ?',
+    // },
+    // {
+    //   id: 2,
+    //   author: 'Super Chat',
+    //   content: "T'as pas des super-croquettes ?",
+    // },
+    // {
+    //   id: 3,
+    //   author: 'Super Chat',
+    //   content: 'Stp',
+    // },
   ],
   currentMessage: '',
 };

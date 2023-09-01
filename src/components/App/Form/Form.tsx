@@ -57,13 +57,15 @@ function Form() {
     // state global = state dans le store
     // modifier le store → dispatcher une action
     // cette action sera récupérer dans le reducer pour modifier le state
-    dispatch(
-      addMessage({
-        id: getNextId(messages), // TODO: générer un ID
-        author: 'Super Chat', // en dur pour le moment
-        content: currentMessage, // valeur depuis mon état
-      })
-    );
+    if (currentMessage.trim()) {
+      dispatch(
+        addMessage({
+          id: getNextId(messages), // TODO: générer un ID
+          author: 'Super Chat', // en dur pour le moment
+          content: currentMessage, // valeur depuis mon état
+        })
+      );
+    }
   }
 
   return (
