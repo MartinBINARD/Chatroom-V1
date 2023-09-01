@@ -35,6 +35,8 @@ export const changeCurrentMessage = createAction<string>(
   'chat/change-current-message'
 );
 
+export const addMessage = createAction<Message>('chat/add-message');
+
 const chatReducer = createReducer(initialState, (builder) => {
   builder.addCase(changeCurrentMessage, (state, action) => {
     // je traduis mon action en modifiant le state

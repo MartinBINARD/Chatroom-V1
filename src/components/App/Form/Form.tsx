@@ -43,8 +43,21 @@ function Form() {
     dispatch(changeCurrentMessage(event.target.value));
   }
 
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    // j'affiche mon intention
+    console.log(
+      ` je veux modifier la valeur de "messages" dans mon state global
+      avec mon nouveau message`
+    );
+    // state global = state dans le store
+    // modifier le store → dispatcher une action
+    // cette action sera récupérer dans le reducer pour modifier le state
+  }
+
   return (
-    <form className="form">
+    <form className="form" onSubmit={handleSubmit}>
       <input
         type="text"
         className="form-input"
