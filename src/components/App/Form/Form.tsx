@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../../hooks/redux';
 
@@ -27,7 +27,11 @@ function Form() {
     mon champ dans Redux (Booooh ! Remboursé !).
     Je ferai un commit rectificatif par la suite pour avoir une belle application…
   */
-  const currentMessage = useAppSelector((state) => state.chat.currentMessage);
+
+  // Les champs sont à contrôler en local
+  // const currentMessage = useAppSelector((state) => state.chat.currentMessage);
+  const [currentMessage, setCurrentMessage] = useState('');
+
   const messages = useAppSelector((state) => state.chat.messages);
 
   const dispatch = useDispatch();
@@ -35,18 +39,19 @@ function Form() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    // j'affiche mon intention
-    // console.log(
-    //   `je veux modifier la valeur de "currentMessage" dans mon state global
-    //   avec la valeur de mon input`
-    // );
-    // state global = state dans le store
-    // modifier le store → dispatcher une action
-    // cette action sera récupérer dans le reducer pour modifier le state
-    // on doit fournir la valeur du input
+    // // j'affiche mon intention
+    // // console.log(
+    // //   `je veux modifier la valeur de "currentMessage" dans mon state global
+    // //   avec la valeur de mon input`
+    // // );
+    // // state global = state dans le store
+    // // modifier le store → dispatcher une action
+    // // cette action sera récupérer dans le reducer pour modifier le state
+    // // on doit fournir la valeur du input
 
-    // j'émets mon action
-    dispatch(changeCurrentMessage(event.target.value));
+    // // j'émets mon action
+    // dispatch(changeCurrentMessage(event.target.value));
+    setCurrentMessage(event.target.value);
   }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -61,6 +66,8 @@ function Form() {
           content: currentMessage, // valeur depuis mon état
         })
       );
+
+      setCurrentMessage('');
     }
   }
 
