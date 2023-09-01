@@ -25,7 +25,7 @@ function Messages() {
     je mets en place une référence vers mon élément `.messages` du DOM RÉEL
     pour l'instant, il n'existe pas encore, j'initialise à `null`
   */
-  const messagesRef = useRef(null);
+  const messagesRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     messagesRef.current?.scrollTo(0, messagesRef.current?.scrollHeight);
