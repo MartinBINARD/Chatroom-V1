@@ -1,3 +1,4 @@
+import { useAppSelector } from '../../../hooks/redux';
 import './Form.scss';
 
 function Form() {
@@ -20,6 +21,19 @@ function Form() {
     mon champ dans Redux (Booooh ! Remboursé !).
     Je ferai un commit rectificatif par la suite pour avoir une belle application…
   */
+  const currentMessage = useAppSelector((state) => state.chat.currentMessage);
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    // j'affiche mon intention
+    console.log(
+      `je veux modifier la valeur de "currentMessage" dans mon state global
+      avec la valeur de mon input`
+    );
+    // state global = state dans le store
+    // modifier le store → dispatcher une action
+    // cette action sera récupérer dans le reducer pour modifier le state
+    // on doit fournir la valeur du input
+  }
 
   return (
     <form className="form">
@@ -28,6 +42,10 @@ function Form() {
         className="form-input"
         placeholder="Saisissez votre message…"
         aria-label="Saisissez votre message"
+        // champ contrôlé : lecture
+        value={currentMessage}
+        // champ contrôlé : modification
+        onChange={handleChange}
       />
 
       <button type="submit" className="form-button">

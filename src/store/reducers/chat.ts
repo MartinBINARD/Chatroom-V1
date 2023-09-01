@@ -1,9 +1,10 @@
-import { createReducer } from '@reduxjs/toolkit';
+import { createAction, createReducer } from '@reduxjs/toolkit';
 
 import { Message } from '../../@types';
 
 interface ChatState {
   messages: Message[];
+  currentMessage: string;
 }
 
 const initialState: ChatState = {
@@ -24,8 +25,15 @@ const initialState: ChatState = {
       content: 'Stp',
     },
   ],
-  currentMessage: '',
+  currentMessage: 'toto',
 };
+
+// je vais récupérer une chaîne de caractères = la saisie utilisateur
+// → payload
+// → il faut typer mon action
+export const changeCurrentMessage = createAction<string>(
+  'chat/change-current-message'
+);
 
 const chatReducer = createReducer(initialState, (builder) => {});
 
