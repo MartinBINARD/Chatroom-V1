@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../../hooks/redux';
 
 import { addMessage, changeCurrentMessage } from '../../../store/reducers/chat';
+import { getNextId } from '../../../selectors';
 
 import './Form.scss';
 
@@ -26,6 +27,8 @@ function Form() {
     Je ferai un commit rectificatif par la suite pour avoir une belle application…
   */
   const currentMessage = useAppSelector((state) => state.chat.currentMessage);
+  const messages = useAppSelector((state) => state.chat.messages);
+
   const dispatch = useDispatch();
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -47,16 +50,16 @@ function Form() {
     event.preventDefault();
 
     // j'affiche mon intention
-    console.log(
-      ` je veux modifier la valeur de "messages" dans mon state global
-      avec mon nouveau message`
-    );
+    // console.log(
+    //   ` je veux modifier la valeur de "messages" dans mon state global
+    //   avec mon nouveau message`
+    // );
     // state global = state dans le store
     // modifier le store → dispatcher une action
     // cette action sera récupérer dans le reducer pour modifier le state
     dispatch(
       addMessage({
-        id: 4, // TODO: générer un ID
+        id: getNextId(messages), // TODO: générer un ID
         author: 'Super Chat', // en dur pour le moment
         content: currentMessage, // valeur depuis mon état
       })
