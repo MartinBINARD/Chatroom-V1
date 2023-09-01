@@ -25,7 +25,7 @@ const initialState: ChatState = {
       content: 'Stp',
     },
   ],
-  currentMessage: 'toto',
+  currentMessage: '',
 };
 
 // je vais récupérer une chaîne de caractères = la saisie utilisateur
@@ -35,6 +35,11 @@ export const changeCurrentMessage = createAction<string>(
   'chat/change-current-message'
 );
 
-const chatReducer = createReducer(initialState, (builder) => {});
+const chatReducer = createReducer(initialState, (builder) => {
+  builder.addCase(changeCurrentMessage, (state, action) => {
+    // je traduis mon action en modifiant le state
+    state.currentMessage = action.payload;
+  });
+});
 
 export default chatReducer;

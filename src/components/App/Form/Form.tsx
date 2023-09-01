@@ -1,4 +1,8 @@
+import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../../hooks/redux';
+
+import { changeCurrentMessage } from '../../../store/reducers/chat';
+
 import './Form.scss';
 
 function Form() {
@@ -22,17 +26,21 @@ function Form() {
     Je ferai un commit rectificatif par la suite pour avoir une belle application…
   */
   const currentMessage = useAppSelector((state) => state.chat.currentMessage);
+  const dispatch = useDispatch();
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     // j'affiche mon intention
-    console.log(
-      `je veux modifier la valeur de "currentMessage" dans mon state global
-      avec la valeur de mon input`
-    );
+    // console.log(
+    //   `je veux modifier la valeur de "currentMessage" dans mon state global
+    //   avec la valeur de mon input`
+    // );
     // state global = state dans le store
     // modifier le store → dispatcher une action
     // cette action sera récupérer dans le reducer pour modifier le state
     // on doit fournir la valeur du input
+
+    // j'émets mon action
+    dispatch(changeCurrentMessage(event.target.value));
   }
 
   return (
