@@ -1,15 +1,17 @@
-import './Messages.scss';
+import { useAppSelector } from '../../../hooks/redux';
+
 import MessagesItem from './MessagesItem';
 
+import './Messages.scss';
+
 function Messages() {
+  const messages = useAppSelector((state) => state.chat.messages);
+
   return (
     <section className="messages">
-      <MessagesItem author="Super Chat" content="Salut, ça va ?" />
-      <MessagesItem
-        author="Super Chat"
-        content="T'as pas des super-croquettes ?"
-      />
-      <MessagesItem author="Super Chat" content="Stp" />
+      {messages.map((message) => (
+        <MessagesItem key={message.id} {...message} />
+      ))}
     </section>
   );
 }
