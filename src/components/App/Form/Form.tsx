@@ -49,14 +49,7 @@ function Form() {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    // j'affiche mon intention
-    // console.log(
-    //   ` je veux modifier la valeur de "messages" dans mon state global
-    //   avec mon nouveau message`
-    // );
-    // state global = state dans le store
-    // modifier le store → dispatcher une action
-    // cette action sera récupérer dans le reducer pour modifier le state
+    // j'envoie mon action seulement si j'ai une saisie utilisateur
     if (currentMessage.trim()) {
       dispatch(
         addMessage({

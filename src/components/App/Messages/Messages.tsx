@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useAppSelector } from '../../../hooks/redux';
 
 import MessagesItem from './MessagesItem';
@@ -21,13 +21,20 @@ import './Messages.scss';
 function Messages() {
   const messages = useAppSelector((state) => state.chat.messages);
 
+  /*
+    je mets en place une référence vers mon élément `.messages` du DOM RÉEL
+    pour l'instant, il n'existe pas encore, j'initialise à `null`
+  */
+  const messagesRef = useRef(null);
+
   useEffect(() => {
-    const sectionElement = document.querySelector('.messages');
-    sectionElement?.scrollTo(0, sectionElement?.scrollHeight);
+    messagesRef.current?.scrollTo(0, messagesRef.current?.scrollHeight);
   }, [messages]);
 
   return (
-    <section className="messages">
+    // Grâce à l'attribut JSX `ref`, je passe mon élément
+    // à la ref `messagesRef` dès qu'il est créé dans le DOM réel
+    <section className="messages" ref={messagesRef}>
       {messages.map((message) => (
         <MessagesItem
           key={message.id}
