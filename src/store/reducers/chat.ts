@@ -24,6 +24,7 @@ const initialState: ChatState = {
       content: 'Stp',
     },
   ],
+  currentMessage: '',
 };
 
 const chatReducer = createReducer(initialState, (builder) => {});
